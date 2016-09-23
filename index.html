@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="AngularMadlibs.css" type="text/css" media="screen">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<title>Get the anguls on Madlibs!</title>
+</head>
+<body ng-app="madLibs">
+	<div ng-controller="GenerateLibs as genLibs">
+
+
+		<div id="mad-libs-page" class="mad-libs-blank, mad-libs-page">
+			<h1>Mad Lib Generator!!!</h1>
+			<p>Mad libs are stories with certain types of words missing, which you fill in on your own; the results are hi-LARIOUS.  Try putting in some of your own words (four per type of word, a comma and space between each word), choose a story for them to be plugged into, then just hit submit!  WE WILL HAVE HOURS OF FUN.</p>
+		</div>
+
+		<div>
+			<div id="div-inputs">
+				Nouns: <input title="Nouns" id="noun-input" type="text" placeholder="Noun, Noun, Noun, Noun" ng-model="genLibs.noun" ng-list=", ">
+				Verbs: <input title="Verbs" id="verb-input" type="text" placeholder="Verb, Verb, Verb, Verb" ng-model="genLibs.verb" ng-list=", ">
+				Adjectives: <input title="Adjectives" id="adjective-input" type="text" placeholder="Adjective, Adjective, Adjective, Adjective" ng-model="genLibs.adj" ng-list=", ">
+				Adverbs: <input title="Adverbs" id="adverb-input" type="text" placeholder="Adverb, Adverb, Adverb, Adverb" ng-model="genLibs.adv" ng-list=", ">
+			</div>
+
+			<div id="story-choice">
+				<form id="radio-buttons">
+					<input type="radio" name="story-radio" value="school" id="school" ng-model="genLibs.story">School
+					<input type="radio" name="story-radio" value="halloween" id="halloween" ng-model="genLibs.story">Halloween
+					<input type="radio" name="story-radio" value="mall" id="mall" ng-model="genLibs.story">The Mall
+				</form>
+			</div>
+
+			<div>
+				<button id="generate" ng-click="genLibs.makeWordArrays()">Generate</button>
+			</div>
+		</div>
+
+
+
+		<div>
+			<p id="school-story" class="school-story" ng-show="genLibs.story === 'school' && genLibs.generate">
+				I woke up today feeling {{genLibs.userAdjs[0]}}.  I got out of my {{genLibs.userNouns[0]}} {{genLibs.userAdvs[0]}} and told my Mom I was {{genLibs.userAdjs[1]}}.  She {{genLibs.userVerbs[0]}} {{genLibs.userAdvs[1]}} and told me to quit begin such a {{genLibs.userNouns[1]}}.  So I got on the school {{genLibs.userNouns[2]}} and {{genLibs.userVerbs[1]}}ed into my seat. At school I felt {{genLibs.userAdjs[2]}} so I {{genLibs.userVerbs[2]}}ed to the bathroom so I wouldn't {{genLibs.userVerbs[3]}} {{genLibs.userAdvs[2]}} in front of everyone.  Alas, I {{genLibs.userVerbs[4]}}d all over the {{genLibs.userAdjs[3]}} {{genLibs.userNouns[3]}} {{genLibs.userAdvs[3]}}.  It was a great day.
+				<img id="school-pic" src="http://vignette2.wikia.nocookie.net/dickfigures/images/5/52/DFTM_Clip_-_Elementary_School.png/revision/latest?cb=20130821122132">
+			</p>
+			<p id="halloween-story" class="halloween-story" ng-show="genLibs.story === 'halloween' && genLibs.generate">
+				For Halloween this year I was a {{genLibs.userNouns[0]}}.  I {{genLibs.userVerbs[0]}}ed my costume myself and it looked {{genLibs.userAdjs[0]}}.  My friends all dressed as {{genLibs.userAdjs[1]}} {{genLibs.userNouns[1]}} and wanted to {{genLibs.userVerbs[1]}} {{genLibs.userAdvs[0]}} instead of Trick or Treat.  So I {{genLibs.userVerbs[1]}}ed alone with my {{genLibs.userNouns[2]}}.  THree hours later I was {{genLibs.userAdjs[2]}} so I ate some {{genLibs.userNouns[3]}} and went home to {{genLibs.userVerbs[2]}}.  My {{genLibs.userNouns[4]}} was wearing a mask to look like a(n) {{genLibs.userAdjs[3]}} {{genLibs.userNouns[5]}}, which made me want to cry {{genLibs.userAdvs[1]}}.
+				<img id="halloween-pic" src="http://wac.450f.edgecastcdn.net/80450F/q103albany.com/files/2011/10/Halloween-pumpkin.png">
+			</p>
+			<p id="mall-story" class="mall-story" ng-show="genLibs.story === 'mall' && genLibs.generate">
+				I want to go to the mall to buy some {{genLibs.userAdjs[0]}} {{genLibs.userNouns[0]}}.  I'll also {{genLibs.userVerbs[0]}} by the foodcourt and {{genLibs.userVerbs[1]}} {{genLibs.userAdvs[0]}} at the shop that sells cakes shaped like {{genLibs.userAdjs[1]}} {{genLibs.userNouns[1]}}.  I'll buy a {{genLibs.userNouns[2]}} at Hot Topic (where it always smells {{genLibs.userAdvs[1]}}).  If I become {{genLibs.userAdjs[2]}} I'll look at a map to find the {{genLibs.userNouns[3]}} store and {{genLibs.userVerbs[2]}} there as {{genLibs.userAdvs[2]}} as I could.  It's gonna be a(n) {{genLibs.userAdjs[3]}} day {{genLibs.userVerbs[3]}}ing {{genLibs.userAdvs[3]}} to my heart's delight.
+				<img id="mall-pic" src="http://thumbs.dreamstime.com/x/scene-inside-shopping-mall-vector-illustration-43847882.jpg">
+			</p>
+		</div>
+	</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+
+<script src="scripts/app.js"></script>
+<script src="scripts/services/services.js"></script>
+<script src="scripts/controllers/AngularMadlibs.js"></script>
+
+
+</body>
+</html>
